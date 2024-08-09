@@ -6,7 +6,7 @@ import time
 # 控制引脚为16，RGB串联5个
 pin = 16
 rgb_num = 5
-rgb_led = NeoPixel(Pin(pin,Pin.OUT),rgb_num)
+rgb_led = NeoPixel(Pin(pin, Pin.OUT), rgb_num)
 
 # 定义RGB颜色
 RED = (255, 0, 0)
