@@ -58,9 +58,12 @@ from machine import Pin
 
 led1 = Pin(15, Pin.OUT)
 led1.value(1)
-
 ```
 
 ## 3. 小结
 
 这一节很简单，没什么可说的，会用from machine import Pin就行，相比stm32简单太多了，这就python的魅力！语法简单，清晰明了
+
+---
+
+2024.8.20 第一次修订，后期不再维护
