@@ -75,8 +75,8 @@ if __name__ == '__main__':
                 rgb_led.write()
                 time.sleep_ms(100)
             time.sleep_ms(1000)    
-
-
 ```
 
+---
 
+2024.8.22 第一次修订，后期不再维护
