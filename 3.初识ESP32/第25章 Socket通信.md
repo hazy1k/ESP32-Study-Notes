@@ -96,5 +96,8 @@ if __name__ == "__main__":
                 print(text) # 打印接收到的数据
                 socket.send("I received: " + text.decode("utf-8")) # 发送数据
             time.sleep_ms(100) # 延时100ms
-
 ```
+
+---
+
+2024.8.24 第一次修订，后期不再维护

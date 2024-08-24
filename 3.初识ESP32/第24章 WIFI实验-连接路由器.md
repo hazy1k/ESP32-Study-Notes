@@ -68,3 +68,7 @@ def wifi_connect():
 if __name__ == "__main__":
     wifi_connect() # 连接WIFI
 ```
+
+---
+
+2024.8.24 第一次修订，后期不再维护

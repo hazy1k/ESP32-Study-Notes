@@ -38,11 +38,11 @@ password = "12345678"
 def wifi_connect():
     wlan=network.WLAN(network.STA_IF)  #STA模式
     wlan.active(True)  #激活
-    
+
     if not wlan.isconnected():
         print("conneting to network...")
         wlan.connect(ssid,password)  #输入 WIFI 账号密码
-        
+
         while not wlan.isconnected():
             led1.value(1)
             time.sleep_ms(300)
@@ -61,7 +61,7 @@ def web_page():
         gpio_state="OFF"
     else:
         gpio_state="ON"
-  
+
     html = """<html><head> <title>ESP32 LED control</title> <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" href="data:,"> <style>html{font-family: Helvetica; display:inline-block; margin: 0px auto; text-align: center;}
         h1{color: #0F3376; padding: 2vh;}p{font-size: 1.5rem;}.button{display: inline-block; background-color: #e7bd3b; border: none; 
@@ -73,7 +73,7 @@ def web_page():
 
 #程序入口
 if __name__=="__main__":
-    
+
     if wifi_connect():
         #SOCK_STREAM表示的是TCP协议，SOCK_DGRAM表示的是UDP协议
         my_socket=socket.socket(socket.AF_INET, socket.SOCK_STREAM)  #创建socket连接
@@ -81,7 +81,7 @@ if __name__=="__main__":
         my_socket.bind(('', 80))
         # 相当于电话的开机 括号里的参数表示可以同时接收5个请求
         my_socket.listen(5)
-        
+
         while True:
             # 进入监听状态，等待别人链接过来，有两个返回值，
             #一个是对方的socket对象，一个是对方的ip以及端口
@@ -105,8 +105,10 @@ if __name__=="__main__":
             client.send('Connection: close\n\n')
             client.sendall(response)
             client.close()
-
-
 ```
+
+---
+
+2024.8.24 第一次修订，后期不再维护
 
 

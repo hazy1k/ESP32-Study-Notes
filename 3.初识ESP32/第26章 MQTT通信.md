@@ -130,23 +130,23 @@ def wifi_connect():
     wlan=network.WLAN(network.STA_IF)  #STA模式
     wlan.active(True)  #激活
     start_time=time.time() # 记录时间做超时判断
-    
+
     if not wlan.isconnected():
         print("conneting to network...")
         wlan.connect(ssid,password)  #输入WIFI账号和密码
-        
+
         while not wlan.isconnected():
             led1.value(1)
             time.sleep_ms(300)
             led1.value(0)
             time.sleep_ms(300)
-            
+
             #超时判断,15 秒没连接成功判定为超时
             if time.time()-start_time>150:
                 print("WIFI Connect Timeout!")
                 break
         return False
-    
+
     else:
         led1.value(0)
         print("network information:", wlan.ifconfig())
@@ -156,15 +156,15 @@ def wifi_connect():
 def mqtt_callback(topic,msg):
     print("topic: {}".format(topic))
     print("msg: {}".format(msg))
-    
+
 #接收数据任务
 def mqtt_recv(tim):
     client.check_msg()
-    
+
 
 #程序入口
 if __name__=="__main__":
-    
+
     if wifi_connect():
         SERVER="mq.tongxinmao.com"
         PORT=18830
@@ -174,10 +174,12 @@ if __name__=="__main__":
         client.set_callback(mqtt_callback)  #配置回调函数
         client.connect()
         client.subscribe(TOPIC)  #订阅主题
-        
+
         #开启RTOS定时器,周期 300ms，执行MQTT通信接收任务
         tim = Timer(0)
         tim.init(period=300, mode=Timer.PERIODIC,callback=mqtt_recv)
-        
-
 ```
+
+---
+
+2024.8.24 第一次修订，后期不再维护
